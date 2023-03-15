@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import Zernike as zk
+import zernike as zk
 
 ### Fig. 3 in [1]
 

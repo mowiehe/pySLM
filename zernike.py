@@ -1,8 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-import pdb
-
 """
 References:
 [1] Zernike polynomials: a guide, Andre Fleck, 2011
