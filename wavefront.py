@@ -19,20 +19,20 @@ C_mn[2, 2] = 0
 
 
 ### creating polar plot
-r_array = np.linspace(0, 1, 10)
-theta_array = np.arange(0, 2 * np.pi, np.pi / 180)
+r_array = np.linspace(0, 1, 100)
+theta_array = np.linspace(0, 2 * np.pi, 100)
 
 r, theta = np.meshgrid(r_array, theta_array)
-W_res = [
-    [zk.W(r[i, j], theta[i, j], C_mn) for j in range(len(r_array))]
-    for i in range(len(theta_array))
-]
-# W_vec = np.vectorize(W)
-# W_res = W_vec(r, theta)
-
+W_res = np.array(
+    [
+        [zk.W(r[i, j], theta[i, j], C_mn) for j in range(len(r_array))]
+        for i in range(len(theta_array))
+    ]
+)
 
 # -- Plot... ------------------------------------------------
 fig, ax = plt.subplots(subplot_kw={"projection": "polar"})
-ax.contourf(theta, r, W_res)
+c = ax.contourf(theta, r, W_res, cmap="Greys", levels=100)
+fig.colorbar(c)
 
 plt.show()
