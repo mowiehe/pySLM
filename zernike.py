@@ -73,6 +73,7 @@ def W(r, theta, C_mn, n_max=10):
 
 
 def GetGrid(x_pix=800, y_pix=800, n_max=10):
+    """TODO, convert to cartesian coordinates"""
     r_max = np.sqrt((x_pix / 2) ** 2 + (y_pix / 2) ** 2)
 
     grid = np.zeros((x_pix, y_pix))
