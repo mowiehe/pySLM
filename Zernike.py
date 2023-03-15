@@ -17,8 +17,8 @@ C_mn = np.zeros((n_max + 1, n_max + 1))
 # piston, bias
 C_mn[0, 0] = 0
 # tip,tilt
-C_mn[-1, 1] = 0
-C_mn[1, 1] = 1
+C_mn[-1, 1] = 1
+C_mn[1, 1] = 0
 # astigmatism, defocus
 C_mn[-2, 2] = 0
 C_mn[0, 2] = 0
@@ -35,7 +35,7 @@ def R_mn(m, n, r):
     """
 
     assert r >= 0 and r <= 1
-    assert type(m) == int and abs(m) <= n
+    assert type(m) == int and abs(m) <= n and m >= 0
     assert type(n) == int and n >= 0
     assert (n - m) % 2 == 0
 
@@ -68,7 +68,7 @@ def Z_mn(m, n, r, theta):
     if m >= 0:
         return R_mn(m, n, r) * np.cos(m * theta)
     else:
-        return R_mn(m, n, r) * np.sin(m * theta)
+        return R_mn(-m, n, r) * np.sin(m * theta)
 
 
 def W(r, theta, C_mn, n_max=10):
